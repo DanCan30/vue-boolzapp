@@ -168,10 +168,13 @@ const app = new Vue(
                         }
                     ],
                 }
-            ]
+            ],
 
-        }
+            lastMessage: [],
 
+        },
     }
+
+    
 
 )

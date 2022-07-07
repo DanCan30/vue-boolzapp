@@ -30,14 +30,21 @@ body {
 
 #left-menu {
     width: 35%;
-    height: 100%;
     background-color: white;
     border-right: 1px solid lightgrey;
 }
 
-#top-left-menu {
+#right-section {
+    width: 65%;
+    height: 100%;
+    background-image: url(../img/mine.jpg);
+}
+
+#top-left-menu,
+#top-right-menu {
     align-items: center;
     background-color: #EAEAEA;
+    height: 80px;
 }
 
 .propic {
@@ -46,9 +53,15 @@ body {
     padding: 10px;
 }
 
-.username {
+.username,
+.active-chat {
     font-weight: lighter;
-    width: 80%;
+    flex-grow: 1;
+}
+
+.active-chat > span {
+    color: #7F739B;
+    font-size: .9rem;
 }
 
 .contact-name {
@@ -56,14 +69,16 @@ body {
 
 }
 
-#navigation-links > i {
+#navigation-links > i,
+#chat-interation-links > i {
     cursor: pointer;
     font-size: 1.5rem;
     margin: 10px;
     color: #B1B1B1;
 }
 
-#navigation-links > i:last-child {
+#navigation-links > i:last-child,
+#chat-interation-links > i:last-child {
     margin-right: 30px;
     font-size: 1.6rem;
 }
@@ -71,6 +86,7 @@ body {
 #notification-menu {
     background-color: #8EDAFC;
     align-items: center;
+    height: 80px;
 }
 
 #notification-menu > i {
@@ -86,6 +102,11 @@ body {
 #notification-menu > div > a {
     color: #4F74A4;
     font-size: .9rem;
+}
+
+#search-menu {
+    height: 80px;
+    padding-top: 10px;
 }
 
 #search-menu button {
@@ -106,6 +127,11 @@ body {
 
 #search-menu > input:focus {
     border-bottom: 2px solid grey;
+}
+
+#contact-list {
+    height: calc(100% - 240px);
+    overflow-y: scroll;
 }
 
 #contact-list > ul {
@@ -132,4 +158,35 @@ body {
     position: absolute;
     top: 20px;
     right: 10px;
+}
+
+#messages-container {
+    height: calc(100% - 160px);
+    overflow-y: scroll;
+}
+
+#text-input-container {
+    height: 80px;
+    background-color: #F3EEEA;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#text-input-container input {
+    width: 80%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+
+#text-input-container i {
+    font-size: 2rem;
+    color: #6B7376;
+    cursor: pointer;
+}
+
+#text-input-container i:last-child {
+    margin-right: 1rem;
 }
