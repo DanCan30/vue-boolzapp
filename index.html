@@ -50,8 +50,12 @@
 
             <div id="contact-list">
                 <ul>
-                    <li v-for="(contact, index) in contacts" class="flx">
-                        <img :src="`./img/avatar${contact.avatar}.jpg`" :alt="contact[index]" class="propic">
+                    <li v-for="(contact, index) in contacts"
+                        class="flx" 
+                        :class="{active: index === activeChat}" 
+                        @click="changeActiveChat(index)">
+
+                        <img :src="`./img/avatar${contact.avatar}.jpg`" :alt="contact.name" class="propic">
                         
                         <div class="contact-info flx">
                             <h3 class="contact-name">{{ contact.name }}</h3>
@@ -80,7 +84,16 @@
             </div>
 
             <div id="messages-container">
-
+                <ul class="flx">
+                    <li v-for="(element, index) in contacts[activeChat].messages"
+                        class="message"
+                        :class="(element.status === 'received') ? 'received' : 'sent'">
+                            {{ element.message }}
+                            <span>
+                                {{ getHour(element.date) }}
+                            </span>
+                    </li>
+                </ul>
             </div>
 
             <div id="text-input-container" class="flx">

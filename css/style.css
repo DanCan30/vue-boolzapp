@@ -140,6 +140,11 @@ body {
 
 #contact-list li {
     position: relative;
+    cursor: pointer;
+}
+
+#contact-list li.active {
+    background-color: #E9EBEB;
 }
 
 .contact-info {
@@ -163,6 +168,15 @@ body {
 #messages-container {
     height: calc(100% - 160px);
     overflow-y: scroll;
+}
+
+#messages-container > ul {
+    padding-top: 80px;
+    list-style: none;
+    width: 80%;
+    height: 99%;
+    margin: auto;
+    flex-direction: column;
 }
 
 #text-input-container {
@@ -189,4 +203,31 @@ body {
 
 #text-input-container i:last-child {
     margin-right: 1rem;
+}
+
+.message {
+    border-radius: 10px;
+    padding: 20px 30px;
+    width: 45%;
+    overflow: auto;
+    margin: 8px;
+    position: relative;
+}
+
+.message.sent {
+    background-color: #D5F9BA;
+    align-self: flex-end;
+}
+
+.message.received {
+    background-color: white;
+    align-self: flex-start;
+}
+
+.message > span {
+    color: #C6B9CA;
+    font-size: .7rem;
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
 }

@@ -4,8 +4,10 @@ const app = new Vue(
         el: "#app",
 
         data: 
-        {
+        {    
 
+            activeChat:  0,
+            
             contacts: [
                 {
                     name: 'Michele',
@@ -170,9 +172,25 @@ const app = new Vue(
                 }
             ],
 
-            lastMessage: [],
-
         },
+
+        methods: {
+            changeActiveChat: function(chatIndex) {
+                this.activeChat = chatIndex
+            },
+
+            getHour: function(stringToSplit) {
+
+                const splittedDate = stringToSplit.split(" ");
+
+                let hour = (splittedDate[1]);
+
+                hour = hour.substring(0, 5);
+
+                return hour;
+            }
+
+        }
     }
 
     
