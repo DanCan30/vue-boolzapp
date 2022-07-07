@@ -147,7 +147,7 @@ const app = new Vue(
                     ],
                 },
                 {
-                    name: 'Davide',
+                    name: 'Davida',
                     avatar: '_8',
                     visible: true,
                     messages: [

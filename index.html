@@ -25,7 +25,7 @@
         <section id="left-menu">
 
             <div id="top-left-menu" class="flx">
-                <img  class="propic" src="./img/avatar_8.jpg" alt="User profile pic">
+                <img  class="propic" src="./img/avatar_io.jpg" alt="User profile pic">
                 <h2 class="username">Daniele</h2>
 
                 <div id="navigation-links" class="flx">
@@ -46,6 +46,20 @@
             <div id="search-menu">
                 <button><i class="fa-solid fa-magnifying-glass"></i></button>
                 <input type="text" placeholder="Cerca o inizia una nuova chat">
+            </div>
+
+            <div id="contact-list">
+                <ul>
+                    <li v-for="(contact, index) in contacts" class="flx">
+                        <img :src="`./img/avatar${contact.avatar}.jpg`" :alt="contact[index]" class="propic">
+                        
+                        <div class="contact-info flx">
+                            <h3 class="contact-name">{{ contact.name }}</h3>
+                            <span>Ultimo messaggio inviato</span>
+                            <span class="when-last-message">12:00</span>
+                        </div>
+                    </li>
+                </ul>
             </div>
 
         </section>
