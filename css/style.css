@@ -255,10 +255,14 @@ body {
     position: absolute;
     top: 15px;
     right: 0;
+    height: 50px;
 }
 
-.message > i.showed,
-.message > i > span.showed {
+.message > i > span.show {
+    display: inline-block;
+}
+
+.message:hover > i {
     display: inline-block;
 }
 

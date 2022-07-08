@@ -57,8 +57,8 @@
                         
                         <div class="contact-info flx">
                             <h3 class="contact-name">{{ contact.name }}</h3>
-                            <span>Ultimo messaggio inviato</span>
-                            <span class="when-last-message">12:00</span>
+                            <span>{{ getLastElements(index).mostRecentMessage }}</span>
+                            <span class="when-last-message">{{ getLastElements(index).hour }}</span>
                         </div>
                     </li>
                 </ul>
@@ -72,7 +72,7 @@
                 <img  class="propic" :src="`./img/avatar${contacts[activeChat].avatar}.jpg`" alt="User profile pic">
                 <div class="active-chat">
                     <h2>{{ contacts[activeChat].name }}</h2>
-                    <span>Ultimo accesso oggi alle 12:00</span>
+                    <span>Ultimo accesso oggi alle {{ getLastElements(activeChat).hour }}</span>
                 </div>
                 <div id="chat-interation-links" class="flx">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -85,19 +85,16 @@
                 <ul class="flx">
                     <li v-for="(element, index) in contacts[activeChat].messages"
                         class="message"
-                        :class="(element.status === 'received') ? 'received' : 'sent'"
-                        @mouseover="dropdownButton = 'show'"
-                        @mouseleave="dropdownButton = 'hidden'">
+                        :class="(element.status === 'received') ? 'received' : 'sent'">
                             {{ element.message }}
                             <span>
                                 {{ extractHour(element.date) }}
                             </span>
 
                             <i class="fa-solid fa-chevron-down"
-                            :class="{ showed: dropdownButton === 'show' }"
                             @click="(dropdownMenu === 'hidden') ? dropdownMenu = 'showed' : dropdownMenu = 'hidden'"
-                            @mouseleave="dropdownMenu = '' ">
-                                <span :class="dropdownMenu" @click="deleteMessage(index, contacts[activeChat].messages)">Cancella messaggio</span>
+                            @mouseleave="dropdownMenu = 'hidden' ">
+                                <span :class="{ show: dropdownMenu === 'showed' }" @click="deleteMessage(index, contacts[activeChat].messages)">Cancella messaggio</span>
                             </i>
 
                     </li>

@@ -12,8 +12,6 @@ const app = new Vue(
 
             searchBar: "",
 
-            dropdownButton: "hidden",
-
             dropdownMenu: "hidden",
 
             contacts: [
@@ -260,6 +258,20 @@ const app = new Vue(
             deleteMessage: function(index, array) {
 
                 array.splice(index, 1);
+            },
+
+            getLastElements: function(i) {
+
+                const getMessage = this.contacts[i].messages;
+
+                const getLastMessage = getMessage[getMessage.length - 1];
+
+                const lastMessage = getLastMessage.message;
+
+                const lastReceivedMessageHour = this.extractHour(getLastMessage.date);
+
+                return {mostRecentMessage: lastMessage, hour: lastReceivedMessageHour};
+
             }
 
         },
