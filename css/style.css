@@ -231,3 +231,49 @@ body {
     bottom: 8px;
     right: 8px;
 }
+
+
+
+
+
+
+
+
+
+
+
+@media all and (max-width: 1024px) {
+
+    .main-wrapper {
+        width: 100%;
+        top: 0;
+        left: 0;
+        height: 100%;
+    }
+
+    #messages-container > ul {
+        width: 95%;
+    }
+}
+
+
+@media all and (max-width: 768px) {
+
+    .contact-info,
+    #notification-menu span,
+    #notification-menu a,
+    #navigation-links,
+    .username,
+    #search-menu > input {
+        display: none;
+    }
+
+    #left-menu {
+        width: 5.5rem;
+    }
+
+    #right-section {
+        width: calc(100% - 5.5rem);
+    }
+
+}

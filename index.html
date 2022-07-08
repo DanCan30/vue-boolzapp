@@ -45,7 +45,7 @@
 
             <div id="search-menu">
                 <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                <input type="text" placeholder="Cerca o inizia una nuova chat">
+                <input type="text" placeholder="Cerca">
             </div>
 
             <div id="contact-list">
@@ -71,9 +71,9 @@
         <section id="right-section">
 
             <div id="top-right-menu" class="flx">
-                <img  class="propic" src="./img/avatar_io.jpg" alt="User profile pic">
+                <img  class="propic" :src="`./img/avatar${contacts[activeChat].avatar}.jpg`" alt="User profile pic">
                 <div class="active-chat">
-                    <h2>Daniele</h2>
+                    <h2>{{ contacts[activeChat].name }}</h2>
                     <span>Ultimo accesso oggi alle 12:00</span>
                 </div>
                 <div id="chat-interation-links" class="flx">
