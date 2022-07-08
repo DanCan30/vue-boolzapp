@@ -90,7 +90,7 @@
                         :class="(element.status === 'received') ? 'received' : 'sent'">
                             {{ element.message }}
                             <span>
-                                {{ getHour(element.date) }}
+                                {{ extractHour(element.date) }}
                             </span>
                     </li>
                 </ul>
@@ -98,8 +98,9 @@
 
             <div id="text-input-container" class="flx">
                 <i class="fa-regular fa-face-smile"></i>
-                <input type="text" placeholder="Scrivi un messaggio">
-                <i class="fa-solid fa-microphone"></i>
+                <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyUp.enter="sendNewMessage">
+                <i class="fa-solid fa-microphone" v-if="newMessage === '' "></i>
+                <i class="fa-solid fa-paper-plane" v-else></i>
 
             </div>
 

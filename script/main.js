@@ -8,6 +8,8 @@ const app = new Vue(
 
             activeChat:  0,
             
+            newMessage: "",
+
             contacts: [
                 {
                     name: 'Michele',
@@ -179,7 +181,7 @@ const app = new Vue(
                 this.activeChat = chatIndex
             },
 
-            getHour: function(stringToSplit) {
+            extractHour: function(stringToSplit) {
 
                 const splittedDate = stringToSplit.split(" ");
 
@@ -188,6 +190,41 @@ const app = new Vue(
                 hour = hour.substring(0, 5);
 
                 return hour;
+            },
+
+            sendNewMessage: function() {
+
+                if( this.newMessage === "") {
+                    return
+                }
+
+                let getCurrentDay = new Date().getDay();
+                let getCurrentMonth = new Date().getMonth() + 1;
+                let getCurrentYear = new Date().getFullYear();
+
+                let getCurrentHour = new Date().getHours();
+                let getCurrentMinutes = new Date().getMinutes();
+                let getCurrentSeconds = new Date().getSeconds();
+
+                if (getCurrentHour < 10) {
+                    getCurrentHour = "0" + getCurrentHour;
+                };
+
+                if (getCurrentMinutes < 10) {
+                    getCurrentMinutes = "0" + getCurrentMinutes;
+                };
+
+                if (getCurrentSeconds < 10) {
+                    getCurrentSeconds = "0" + getCurrentSeconds;
+                };
+
+                const currentDate = `${getCurrentDay}/${getCurrentMonth}/${getCurrentYear} ${getCurrentHour}:${getCurrentMinutes}:${getCurrentSeconds}`;
+
+                console.log(currentDate);
+
+                this.contacts[this.activeChat].messages.push({date: currentDate, message: this.newMessage, status: "sent"});
+
+                this.newMessage = "";
             }
 
         }
