@@ -5,18 +5,13 @@
 }
 
 body {
-    background-color: #DADBD4;
+    background-image: linear-gradient(to bottom, #009688 0vh, #009688 12vh, #DADBD4 12vh, #DADBD4 100vh);
+    height: 100vh;
     font-family: "lato" , sans-serif;
 }
 
 .flx {
     display: flex;
-}
-
-
-#background-green-band {
-    height: 12vh;
-    background-color: #009688;
 }
 
 .main-wrapper {

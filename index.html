@@ -16,9 +16,6 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    
-    <div id="background-green-band"></div>
-
 
     <div id="app" class="main-wrapper flx">
 
@@ -45,12 +42,13 @@
 
             <div id="search-menu">
                 <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                <input type="text" placeholder="Cerca">
+                <input type="text" placeholder="Cerca" v-model="searchBar" @keyUp="filterContacts()">
             </div>
 
             <div id="contact-list">
                 <ul>
                     <li v-for="(contact, index) in contacts"
+                        v-show="contact.visible === true"
                         class="flx" 
                         :class="{active: index === activeChat}" 
                         @click="changeActiveChat(index)">
@@ -100,7 +98,7 @@
                 <i class="fa-regular fa-face-smile"></i>
                 <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyUp.enter="sendNewMessage(activeChat)">
                 <i class="fa-solid fa-microphone" v-if="newMessage === '' "></i>
-                <i class="fa-solid fa-paper-plane" v-else></i>
+                <i class="fa-solid fa-paper-plane" v-else @click="sendNewMessage(activeChat)"></i>
 
             </div>
 

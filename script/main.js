@@ -10,6 +10,8 @@ const app = new Vue(
             
             newMessage: "",
 
+            searchBar: "",
+
             contacts: [
                 {
                     name: 'Michele',
@@ -227,6 +229,31 @@ const app = new Vue(
                 setTimeout(() => this.contacts[currentIndex].messages.push({date: currentDate, message: "Ok!", status: "received"}), 1000);
         
             },
+
+            filterContacts: function() {
+
+                for (let i = 0; i < this.contacts.length; i++) {
+
+                    const lowerCaseInput = this.searchBar.toLowerCase();
+                    const lowerCaseContact = this.contacts[i].name.toLowerCase();
+
+                    console.log(lowerCaseInput);
+
+                    if(lowerCaseInput === "") {
+                        this.contacts[i].visible = true;
+                    } else {
+
+                        if (!lowerCaseContact.includes(lowerCaseInput)) {
+                            this.contacts[i].visible = false;
+                        } else {
+                            this.contacts[i].visible = true;
+                        }
+                    }
+
+
+                }
+
+            }
 
         },
     },
