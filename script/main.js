@@ -192,7 +192,7 @@ const app = new Vue(
                 return hour;
             },
 
-            sendNewMessage: function() {
+            sendNewMessage: function(currentIndex) {
 
                 if( this.newMessage === "") {
                     return
@@ -220,15 +220,16 @@ const app = new Vue(
 
                 const currentDate = `${getCurrentDay}/${getCurrentMonth}/${getCurrentYear} ${getCurrentHour}:${getCurrentMinutes}:${getCurrentSeconds}`;
 
-                console.log(currentDate);
-
-                this.contacts[this.activeChat].messages.push({date: currentDate, message: this.newMessage, status: "sent"});
+                this.contacts[currentIndex].messages.push({date: currentDate, message: this.newMessage, status: "sent"});
 
                 this.newMessage = "";
-            }
+                
+                setTimeout(() => this.contacts[currentIndex].messages.push({date: currentDate, message: "Ok!", status: "received"}), 1000);
+        
+            },
 
-        }
-    }
+        },
+    },
 
     
 

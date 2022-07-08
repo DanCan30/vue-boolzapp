@@ -98,7 +98,7 @@
 
             <div id="text-input-container" class="flx">
                 <i class="fa-regular fa-face-smile"></i>
-                <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyUp.enter="sendNewMessage">
+                <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyUp.enter="sendNewMessage(activeChat)">
                 <i class="fa-solid fa-microphone" v-if="newMessage === '' "></i>
                 <i class="fa-solid fa-paper-plane" v-else></i>
 
