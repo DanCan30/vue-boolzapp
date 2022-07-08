@@ -207,16 +207,26 @@ body {
     overflow: auto;
     margin: 8px;
     position: relative;
+    cursor: pointer;
+    overflow: hidden;
 }
 
 .message.sent {
-    background-color: #D5F9BA;
+    background-color: rgb(213, 249, 186);
     align-self: flex-end;
+}
+
+.message.sent:hover {
+    background-color: rgb(195, 253, 151)
 }
 
 .message.received {
     background-color: white;
     align-self: flex-start;
+}
+
+.message.received:hover {
+    background-color: rgb(233, 229, 229);
 }
 
 .message > span {
@@ -225,6 +235,31 @@ body {
     position: absolute;
     bottom: 8px;
     right: 8px;
+}
+
+.message > i {
+    color: #C6B9CA;
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    display: none;
+}
+
+.message > i > span {
+    font-weight: lighter;
+    display: none;
+    color: black;
+    font-size: .75rem;
+    background-color: white;
+    padding: 10px 20px;
+    position: absolute;
+    top: 15px;
+    right: 0;
+}
+
+.message > i.showed,
+.message > i > span.showed {
+    display: inline-block;
 }
 
 

@@ -85,11 +85,21 @@
                 <ul class="flx">
                     <li v-for="(element, index) in contacts[activeChat].messages"
                         class="message"
-                        :class="(element.status === 'received') ? 'received' : 'sent'">
+                        :class="(element.status === 'received') ? 'received' : 'sent'"
+                        @mouseover="dropdownButton = 'show'"
+                        @mouseleave="dropdownButton = 'hidden'">
                             {{ element.message }}
                             <span>
                                 {{ extractHour(element.date) }}
                             </span>
+
+                            <i class="fa-solid fa-chevron-down"
+                            :class="{ showed: dropdownButton === 'show' }"
+                            @click="(dropdownMenu === 'hidden') ? dropdownMenu = 'showed' : dropdownMenu = 'hidden'"
+                            @mouseleave="dropdownMenu = '' ">
+                                <span :class="dropdownMenu" @click="deleteMessage(index, contacts[activeChat].messages)">Cancella messaggio</span>
+                            </i>
+
                     </li>
                 </ul>
             </div>

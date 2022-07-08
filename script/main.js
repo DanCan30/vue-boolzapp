@@ -12,6 +12,10 @@ const app = new Vue(
 
             searchBar: "",
 
+            dropdownButton: "hidden",
+
+            dropdownMenu: "hidden",
+
             contacts: [
                 {
                     name: 'Michele',
@@ -237,8 +241,6 @@ const app = new Vue(
                     const lowerCaseInput = this.searchBar.toLowerCase();
                     const lowerCaseContact = this.contacts[i].name.toLowerCase();
 
-                    console.log(lowerCaseInput);
-
                     if(lowerCaseInput === "") {
                         this.contacts[i].visible = true;
                     } else {
@@ -253,6 +255,11 @@ const app = new Vue(
 
                 }
 
+            },
+
+            deleteMessage: function(index, array) {
+
+                array.splice(index, 1);
             }
 
         },
