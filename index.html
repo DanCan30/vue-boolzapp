@@ -100,7 +100,11 @@
 
                     </li>
                 </ul>
-                <div v-else class="cryptography">Questo sito è crittografato con le paperelle, occhio a quello che scrivi o te se bevono. <i class="fa-solid fa-cannabis"></i></div>
+                <div v-else class="cryptography">
+                    <i class="fa-solid fa-lock lock" @dblclick="criptographyEasterEgg()"></i>
+                    {{ cryptographyMessage }}
+                    <i class="fa-solid fa-cannabis easter-egg" :class="{show: cryptographyMessage.length != 27 }"></i>
+                </div>
             </div>
 
             <div id="text-input-container" class="flx">

@@ -14,6 +14,8 @@ const app = new Vue(
 
             dropdownMenu: "hidden",
 
+            cryptographyMessage: "La tua chat è crittografata",
+
             contacts: [
                 {
                     name: 'Michele',
@@ -295,6 +297,10 @@ const app = new Vue(
                     return {mostRecentMessage: lastMessage, hour: lastReceivedMessageHour};
                 };
             },
+
+            criptographyEasterEgg: function () {
+              this.cryptographyMessage = "Questo sito è crittografato con le paperelle, occhio a quello che scrivi o te se bevono.";
+            }
         },
     },
 );
