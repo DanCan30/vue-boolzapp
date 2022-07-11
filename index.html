@@ -82,8 +82,9 @@
             </div>
 
             <div id="messages-container">
-                <ul class="flx">
-                    <li v-for="(element, index) in contacts[activeChat].messages"
+                <ul class="flx" 
+                    v-if="emptyChat === false">
+                    <li v-for="(element, index, array) in contacts[activeChat].messages"
                         class="message"
                         :class="(element.status === 'received') ? 'received' : 'sent'">
                             {{ element.message }}
@@ -91,14 +92,15 @@
                                 {{ extractHour(element.date) }}
                             </span>
 
-                            <i class="fa-solid fa-chevron-down"
+                            <i class="fa-solid fa-chevron-down dropdown"
                             @click="(dropdownMenu === 'hidden') ? dropdownMenu = 'showed' : dropdownMenu = 'hidden'"
                             @mouseleave="dropdownMenu = 'hidden' ">
-                                <span :class="{ show: dropdownMenu === 'showed' }" @click="deleteMessage(index, contacts[activeChat].messages)">Cancella messaggio</span>
+                                <span :class="{ show: dropdownMenu === 'showed' }" @click="deleteMessage(index, contacts[activeChat].messages); isChatEmpty()">Cancella messaggio</span>
                             </i>
 
                     </li>
                 </ul>
+                <div v-else>aaa</div>
             </div>
 
             <div id="text-input-container" class="flx">

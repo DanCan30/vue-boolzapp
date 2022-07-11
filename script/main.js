@@ -10,6 +10,8 @@ const app = new Vue(
             
             newMessage: "",
 
+            emptyChat:  false,
+
             searchBar: "",
 
             dropdownMenu: "hidden",
@@ -258,6 +260,15 @@ const app = new Vue(
             deleteMessage: function(index, array) {
 
                 array.splice(index, 1);
+            },
+
+            isChatEmpty: function() {
+                if(this.contacts[this.activeChat].messages.length === 0) {
+                    emptyChat = true;
+                } else {
+                    emptyChat = false;
+                }
+                console.log(emptyChat);
             },
 
             getLastElements: function(i) {

@@ -237,7 +237,7 @@ body {
     right: 8px;
 }
 
-.message > i {
+.dropdown {
     color: #C6B9CA;
     position: absolute;
     top: 8px;
@@ -245,7 +245,7 @@ body {
     display: none;
 }
 
-.message > i > span {
+.dropdown > span {
     font-weight: lighter;
     display: none;
     color: black;
@@ -258,12 +258,18 @@ body {
     height: 50px;
 }
 
-.message > i > span.show {
+.dropdown > span.show,
+div.show,
+.message:hover > i {
     display: inline-block;
 }
 
-.message:hover > i {
-    display: inline-block;
+ul.show {
+    display: flex;
+}
+
+.hide {
+    display: none;
 }
 
 
