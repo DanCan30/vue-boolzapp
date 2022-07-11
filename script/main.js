@@ -10,8 +10,6 @@ const app = new Vue(
             
             newMessage: "",
 
-            emptyChat:  false,
-
             searchBar: "",
 
             dropdownMenu: "hidden",
@@ -229,6 +227,10 @@ const app = new Vue(
                 this.contacts[currentIndex].messages.push({date: currentDate, message: this.newMessage, status: "sent"});
 
                 this.newMessage = "";
+
+                if (this.emptyChat === true) {
+                    this.emptyChat = false;
+                }
                 
                 setTimeout(() => this.contacts[currentIndex].messages.push({date: currentDate, message: "Ok!", status: "received"}), 1000);
         
@@ -243,51 +245,56 @@ const app = new Vue(
 
                     if(lowerCaseInput === "") {
                         this.contacts[i].visible = true;
+
                     } else {
 
                         if (!lowerCaseContact.includes(lowerCaseInput)) {
                             this.contacts[i].visible = false;
                         } else {
                             this.contacts[i].visible = true;
-                        }
-                    }
+                        };
+                    };
 
-
-                }
+                };
 
             },
 
             deleteMessage: function(index, array) {
 
-                array.splice(index, 1);
+                if (array.length > 0) {
+                    array.splice(index, 1);
+                };
             },
 
             isChatEmpty: function() {
-                if(this.contacts[this.activeChat].messages.length === 0) {
-                    emptyChat = true;
-                } else {
+
+                let emptyChat =  false;
+
+                if(this.contacts[this.activeChat].messages.length > 0) {
                     emptyChat = false;
-                }
-                console.log(emptyChat);
+                } else {
+                    emptyChat = true;
+                };
+
+                return emptyChat;
             },
 
-            getLastElements: function(i) {
+            getLastElements: function(array, index) {
 
-                const getMessage = this.contacts[i].messages;
+                if(array.length > 0 ) {
 
-                const getLastMessage = getMessage[getMessage.length - 1];
-
-                const lastMessage = getLastMessage.message;
-
-                const lastReceivedMessageHour = this.extractHour(getLastMessage.date);
-
-                return {mostRecentMessage: lastMessage, hour: lastReceivedMessageHour};
-
-            }
-
+                    const getMessageInfos = this.contacts[index].messages;
+    
+                    const getLastElement = getMessageInfos[getMessageInfos.length - 1];
+    
+                    const lastMessage = getLastElement.message;
+    
+                    const lastReceivedMessageHour = this.extractHour(getLastElement.date);
+    
+                    
+                    return {mostRecentMessage: lastMessage, hour: lastReceivedMessageHour};
+                };
+            },
         },
     },
-
-    
-
-)
+);

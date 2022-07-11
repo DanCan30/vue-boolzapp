@@ -249,13 +249,13 @@ body {
     font-weight: lighter;
     display: none;
     color: black;
-    font-size: .75rem;
+    font-size: .7rem;
     background-color: white;
-    padding: 10px 20px;
+    padding: 10px;
     position: absolute;
-    top: 15px;
+    top: 10px;
     right: 0;
-    height: 50px;
+    width: 200px;
 }
 
 .dropdown > span.show,
@@ -268,8 +268,13 @@ ul.show {
     display: flex;
 }
 
-.hide {
-    display: none;
+.cryptography {
+    background-color: rgb(245, 226, 197);
+    padding: 20px 50px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 60%;
+    text-align: center;
 }
 
 
