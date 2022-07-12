@@ -72,7 +72,7 @@
                 <img  class="propic" :src="`./img/avatar${contacts[activeChat].avatar}.jpg`" alt="User profile pic">
                 <div class="active-chat">
                     <h2>{{ contacts[activeChat].name }}</h2>
-                    <span> {{ (contacts[activeChat].messages.length == 0) ? "Ultimo accesso di recente" : 'Ultimo accesso oggi alle' + getLastElements(contacts[activeChat].messages, activeChat).hour }}</span>
+                    <span> {{ lastSeen(contacts[activeChat].messages, activeChat) }}</span>
                 </div>
                 <div id="chat-interation-links" class="flx">
                     <i class="fa-solid fa-magnifying-glass"></i>

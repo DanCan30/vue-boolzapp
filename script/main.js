@@ -302,7 +302,17 @@ const app = new Vue(
 
             criptographyEasterEgg: function () {
               this.cryptographyMessage = "Questo sito è crittografato con le paperelle, occhio a quello che scrivi o te se bevono.";
+            },
+
+            lastSeen: function(array, index) {
+
+                if(array.length > 0) {
+                    return "Ultimo accesso oggi alle " + this.getLastElements(array, index).hour;
+                } else {
+                    return "Ultimo accesso di recente"
+                }
             }
+
         },
     },
 );
