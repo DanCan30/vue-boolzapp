@@ -239,23 +239,51 @@ const app = new Vue(
                     this.emptyChat = false;
                 }
                 
-                setTimeout(() => this.dynamicTextBack(), 1000);           
+                const userMessage = this.newMessage;
+
+                this.newMessage = "";
+
+                setTimeout(() => this.dynamicTextBack(userMessage), 1000);           
         
             },
 
-            dynamicTextBack: function () {
+            dynamicTextBack: function (message) {
 
-                let lowerCaseMessage = this.newMessage.toLowerCase;
+                let lowerCaseMessage = message.toLowerCase();
 
-                switch(lowerCaseMessage) {
-                    case "ciao": 
-                    this.contacts[this.activeChat].messages.push({date: this.getCurrentDate(), message: "Ciao!", status: "received"});
-                    this.newMessage = "";
-                    default:
-                    this.contacts[this.activeChat].messages.push({date: this.getCurrentDate(), message: "Ok!", status: "received"});
-                    this.newMessage = "";
 
-                }
+
+                if(lowerCaseMessage.includes("❤️")) {
+                    this.contacts[this.activeChat].messages.push({date: this.getCurrentDate(), message: "Ti vedo solo come un amico.", status: "received"});
+
+                } else if (lowerCaseMessage.includes("😂")) {
+                    this.contacts[this.activeChat].messages.push({date: this.getCurrentDate(), message: "LOL!!!", status: "received"});
+                
+                } else if (lowerCaseMessage.includes("😘")) {
+                    this.contacts[this.activeChat].messages.push({date: this.getCurrentDate(), message: "Bleah, che schifo...", status: "received"});
+                        
+                } else if (lowerCaseMessage.includes("😍")) {
+                    this.contacts[this.activeChat].messages.push({date: this.getCurrentDate(), message: "SICUREZZA!", status: "received"});
+                        
+                } else {
+
+                    switch(lowerCaseMessage) {
+                        case "ciao": 
+                        this.contacts[this.activeChat].messages.push({date: this.getCurrentDate(), message: "Ciao!", status: "received"});
+                        break;
+                        case "come stai?":
+                        this.contacts[this.activeChat].messages.push({date: this.getCurrentDate(), message: "Tutto bene, grazie!", status: "received"});
+                        break;
+                        case "arrivederci":
+                        this.contacts[this.activeChat].messages.push({date: this.getCurrentDate(), message: "Alla prossima!", status: "received"});
+                        break;
+                        default:
+                        this.contacts[this.activeChat].messages.push({date: this.getCurrentDate(), message: "Ok!", status: "received"});
+    
+                    };
+                };
+                
+
             },
 
             filterContacts: function() {

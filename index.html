@@ -117,7 +117,7 @@
                         {{ emoji }}
                     </span>
                 </div>
-                <input type="text" placeholder="Scrivi un messaggio" v-model.trim="newMessage" @keyUp.enter="sendNewMessage(activeChat)">
+                <input type="text" placeholder="Scrivi un messaggio" v-model.trim="newMessage" @keyUp.enter="sendNewMessage(activeChat); emojiClicked = false">
                 <i class="fa-solid fa-microphone" v-if="newMessage === '' "></i>
                 <i class="fa-solid fa-paper-plane" v-else @click="sendNewMessage(activeChat)"></i>
 
