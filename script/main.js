@@ -295,7 +295,9 @@ const app = new Vue(
     
                     
                     return {mostRecentMessage: lastMessage, hour: lastReceivedMessageHour};
-                };
+                } else {
+                    return {mostRecentMessage: "", hour: "--:--"};
+                }
             },
 
             criptographyEasterEgg: function () {
