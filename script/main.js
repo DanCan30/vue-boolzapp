@@ -16,6 +16,10 @@ const app = new Vue(
 
             cryptographyMessage: "La tua chat è crittografata",
 
+            emojiClicked: false,
+
+            emojis: ["😂", "❤️", "👍", "😍", "😘"],
+
             contacts: [
                 {
                     name: 'Michele',
@@ -198,11 +202,7 @@ const app = new Vue(
                 return hour;
             },
 
-            sendNewMessage: function(currentIndex) {
-
-                if( this.newMessage === "") {
-                    return
-                }
+            getCurrentDate: function() {
 
                 let getCurrentDay = new Date().getDay();
                 let getCurrentMonth = new Date().getMonth() + 1;
@@ -224,18 +224,38 @@ const app = new Vue(
                     getCurrentSeconds = "0" + getCurrentSeconds;
                 };
 
-                const currentDate = `${getCurrentDay}/${getCurrentMonth}/${getCurrentYear} ${getCurrentHour}:${getCurrentMinutes}:${getCurrentSeconds}`;
+                return  `${getCurrentDay}/${getCurrentMonth}/${getCurrentYear} ${getCurrentHour}:${getCurrentMinutes}:${getCurrentSeconds}`;},
 
-                this.contacts[currentIndex].messages.push({date: currentDate, message: this.newMessage, status: "sent"});
 
-                this.newMessage = "";
+            sendNewMessage: function(currentIndex) {
+
+                if( this.newMessage === "") {
+                    return
+                }
+
+                this.contacts[currentIndex].messages.push({date: this.getCurrentDate(), message: this.newMessage, status: "sent"});
 
                 if (this.emptyChat === true) {
                     this.emptyChat = false;
                 }
                 
-                setTimeout(() => this.contacts[currentIndex].messages.push({date: currentDate, message: "Ok!", status: "received"}), 1000);
+                setTimeout(() => this.dynamicTextBack(), 1000);           
         
+            },
+
+            dynamicTextBack: function () {
+
+                let lowerCaseMessage = this.newMessage.toLowerCase;
+
+                switch(lowerCaseMessage) {
+                    case "ciao": 
+                    this.contacts[this.activeChat].messages.push({date: this.getCurrentDate(), message: "Ciao!", status: "received"});
+                    this.newMessage = "";
+                    default:
+                    this.contacts[this.activeChat].messages.push({date: this.getCurrentDate(), message: "Ok!", status: "received"});
+                    this.newMessage = "";
+
+                }
             },
 
             filterContacts: function() {

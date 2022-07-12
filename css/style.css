@@ -10,7 +10,7 @@ body {
     font-family: "lato" , sans-serif;
 }
 
-.flx {
+.flex {
     display: flex;
 }
 
@@ -42,7 +42,7 @@ body {
     height: 80px;
 }
 
-.propic {
+.profile-pic {
     border-radius: 50%;
     max-width: 80px;
     padding: 10px;
@@ -178,6 +178,7 @@ body {
     height: 80px;
     background-color: #F3EEEA;
     align-items: center;
+    position: relative;
     justify-content: space-around;
 }
 
@@ -198,6 +199,34 @@ body {
 
 #text-input-container i:last-child {
     margin-right: 1rem;
+}
+
+#emoji-container {
+    position: absolute;
+    top: -4.2rem;
+    left: 1rem;
+    background-color: white;
+    display: none;
+    border-radius: 20px;
+    box-shadow: 0 0 5px 5px lightgrey;
+}
+
+#emoji-container.show {
+    display: block;
+}
+
+.emoji {
+    display: inline-block;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: .7rem;
+    margin: 2px;
+    border: 2px solid white;
+    border-radius: 20px;
+}
+
+.emoji:hover {
+    border: 2px solid rgb(0, 89, 255);
 }
 
 .message {
